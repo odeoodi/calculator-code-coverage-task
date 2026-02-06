@@ -34,6 +34,13 @@ public class CalculatorTest { // The class name must end with Test
     }
 
     @Test
+    public void testAddDouble() {
+        calculator.add(1.5);
+        calculator.add(2.55);
+        assertEquals(4.05, calculator.getResult(), DELTA);
+    }
+
+    @Test
     public void testSubtract() {
         calculator.add(10);
         calculator.subtract(2);
@@ -48,6 +55,13 @@ public class CalculatorTest { // The class name must end with Test
         assertEquals(4, calculator.getResult());
     }
 
+    @Test
+    @DisplayName("Test double division: 8 / 3")
+    public void testDoubleDivide() {
+        calculator.add(8);
+        calculator.divide(3);
+        assertEquals(2.667, calculator.getResult(), DELTA);
+    }
     // The correct result of this test is that division by zero throws an exception,
     // the caller then handles it in the desired way
     @Test
@@ -63,5 +77,13 @@ public class CalculatorTest { // The class name must end with Test
         calculator.add(4);
         calculator.multiply(2);
         assertEquals(8, calculator.getResult());
+    }
+
+    @Test
+    @DisplayName("Test multiply by doubles 8 * 1.3")
+    public void testMultiply8By1point3() {
+        calculator.add(8);
+        calculator.multiply(1.3);
+        assertEquals(10.4, calculator.getResult(), DELTA);
     }
 }

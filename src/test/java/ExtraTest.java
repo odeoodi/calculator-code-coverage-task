@@ -55,8 +55,7 @@ public class ExtraTest extends AbstractParent {
     @Test
     public void testSquareRoot2() {
         calculator.squareRoot(2);
-        assertEquals(1.0, calculator.getResult(), DELTA, "Squaring root 2 is incorrect");
-        // Add assertXXX() here, expected result should be (int) Math.sqrt(2)
+        assertEquals(1.414, calculator.getResult(), DELTA, "Squaring root 2 is incorrect");
     }
 
     @Test
