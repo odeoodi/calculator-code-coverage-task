@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ExtraTest extends AbstractParent {
 
@@ -34,28 +36,18 @@ public class ExtraTest extends AbstractParent {
         assertEquals(0, calculator.getResult(), "Reset failed");
     }
 
-    @Test
-    public void testSquare2() {
-        calculator.square(2);
-        assertEquals(4, calculator.getResult(), "Squaring number 2 is incorrect");
+    @ParameterizedTest(name = "The square of {0} is {1}")
+    @CsvSource({ "0, 0", "1, 1", "2, 4", "4, 16", "5, 25", "6, 36" })
+    public void testSquare(int number, int result) {
+        calculator.square(number);
+        assertEquals(result, calculator.getResult(), "Squaring "+number+"  is incorrect");
     }
 
-    @Test
-    public void testSquare4() {
-        calculator.square(4);
-        assertEquals(16, calculator.getResult(), "Squaring number 4 is incorrect");
-    }
-
-    @Test
-    public void testSquare5() {
-        calculator.square(5);
-        assertEquals(25, calculator.getResult(), DELTA, "Squaring number 5 is incorrect");
-    }
-
-    @Test
-    public void testSquareRoot2() {
-        calculator.squareRoot(2);
-        assertEquals(1.414, calculator.getResult(), DELTA, "Squaring root 2 is incorrect");
+    @ParameterizedTest(name = "The square root of {0} is {1}")
+    @CsvSource({ "0, 0", "1, 1", "2, 1.414", "4, 2", "16, 4", "25, 5" })
+    public void testSquareRoot(int number, double result) {
+        calculator.squareRoot(number);
+        assertEquals(result, calculator.getResult(), DELTA, "Squaring root "+number+" is incorrect");
     }
 
     @Test

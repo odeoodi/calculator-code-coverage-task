@@ -29,8 +29,8 @@ public class Calculator {
         result = result / n;
     }
 
-    public void square(double n) {
-        result = (double) Math.pow(n, 2);
+    public void square(int n) {
+        result = Math.pow(n, 2);
     }
 
     public void squareRoot(double n) {
